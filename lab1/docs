@@ -1,0 +1,30 @@
+functia my_heuristic:
+    retruneaza numarul de perechi ce ar trebui inversate astfel incat vectorul sa fie intr o stare finala
+    - folosim doua for-uri si pentru orice perechi (i,j) cu i<j si self.vect[i]>self.vect[j] se incrementeaza distanta(care reprezinta valoarea
+            intoarsa de euristica)
+
+    Exemplu: 1 3 8
+             7 5 4
+             2 6 0
+
+             d=0
+
+             pentru i=1: self.vect[i]=1 (deoarece pe prima pozitie vectorul va contine ultima mutare facuta in joc, pe care nu o luam in considerare in cazul de fata)
+                    -deoarece in fata lui 1 nu se afla niciun element mai mare inseamna ca acesta poate ramane unde este deci d=0
+             pentru i=2: self.vect[i]=3
+                    - la fel ca mai sus: d=0
+             pentru i=3: self.vect[i]=8
+                    - d=0
+             pentru i=4: self.vect[i]=7
+                    - d=1, deoarece 7 il are pe 8 in fata si ar trebui inversati
+             pentru i=5: self.vect[i]=5
+                    - d=1+2=3, deoarece atat 7 cat si 8 sunt mai mari decat 5, deci vor avea loc cel putin aceste doua inversiuni
+             pentru i=6: self.vect[i]=4
+                    - d=3+3=6, 5,7,8 sunt mai mari ca 4
+             pentru i=7: self.vect[i]=2
+                    - d=6+5=11
+             pentru i=8: self.vect[i]=6
+                    - d=11+2=13
+
+    astfel distanta intoarsa de euristica va fi 13, distanta ce nu poate supraestima numarul de miscari, deoarece reprezinta numarul minim de
+        interschimbari intre piese si fiecare interschimbare necesita minim o mutare.
